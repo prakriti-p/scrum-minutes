@@ -40,7 +40,6 @@ app.listen(port, function(err) {
         console.log("Running on PORT:  ", port);
         open('http://localhost:8000');
     }
-    
 })  
 
 module.exports = app;

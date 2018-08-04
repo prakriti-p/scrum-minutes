@@ -22,4 +22,4 @@ gulp.task('test', function() {
     env({vars: {ENV: 'Test'}});
     gulp.src('Tests/*.js', {read: false})
     .pipe(gulpMocha({reporter: 'nyan'}));
-}); 
+});
