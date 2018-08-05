@@ -2,11 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var scrumSchema = new Schema({
-    "memberName" : {type: String},
-    "updates" : {type: String},
-    "actionItems" : {type: String},
-    "date": {type: Date},
-    "scrumId": {type: Number}
+    "scrumDate": {type: Date},
+    "scrumId": {type: Number},
+    "scrumMembers": [String],
+    "scrumItems": [{ memberId: String, memberName: String, updates: String, actionItems: String}]
 });
 
 module.exports = mongoose.model('Scrum', scrumSchema, "scrums");  

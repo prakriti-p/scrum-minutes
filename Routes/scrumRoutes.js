@@ -29,6 +29,19 @@ var routes = function(Scrum) {
         .get(function(request, response) {
             response.json(request.scrumItem);
         })
+        .delete(function(request, response) {
+            request.scrumItem.remove(function(error) {
+                if(error) {
+                    response.status(500).send(error);
+                } else {
+                    response.status(200).send("Removed");
+                }
+            });
+        })
+
+    scrumRouter.route('/getScrumByMemberId')
+        .post(scrumController.getScrumByMemberId)
+        
     return scrumRouter;
 }
  

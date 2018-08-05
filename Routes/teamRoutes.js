@@ -31,13 +31,28 @@ var routes = function(Team) {
         })
         .post() 
         .put(function(request, response) {
-            
+            request.member.name = request.body.name;
+            request.member.role = request.body.role;
+            request.member.emailId = request.body.emailId;
+            request.member.save(function(err) {
+                if(err) {
+                    response.status(500).send(error)
+                } else {
+                    response.json(request.member);
+                }
+            }); 
         })
         .patch(function(request, response){
             
         })
         .delete(function(request, response) {
-            
+            request.member.remove(function(error) {
+                if(error) {
+                    response.status(500).send(error);
+                } else {
+                    response.status(200).send("Removed");
+                }
+            });
         });
     return teamRouter;
 }

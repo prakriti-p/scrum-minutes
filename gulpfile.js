@@ -7,10 +7,11 @@ var env = require('gulp-env');
 gulp.task('default', function() {
     nodemon({
         script: 'app.js',   //what to run
-        ext: 'js',   //what to watch for
+        //ext: 'js',   //what to watch for
         env: {
             PORT: 8000
         },
+        //ignore: ['./node_modules/**','./Controllers/**','./models/**','./Routes/**']
         ignore: ['./node_modules/**']
     })
     .on('restart', function() {

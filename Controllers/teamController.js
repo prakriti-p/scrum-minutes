@@ -2,7 +2,6 @@ var teamController = function(Team) {
 
     var post = function(request, response) {
         var team = new Team(request.body);
-
         if(!request.body.name) {
             response.status(400);
             response.send("Name is required");
