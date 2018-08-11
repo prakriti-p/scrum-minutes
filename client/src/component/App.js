@@ -1,7 +1,6 @@
 import React from "react";
-import Display from "./Display";
-import ButtonPanel from "./ButtonPanel";
-import Reset from "./Reset";
+import Canvas from "./Canvas";
+import Menu from "./Menu";
 import nextMove from "../logic/nextMove"
 import resetGame from "../logic/resetGame"
 import "./App.css";
@@ -36,11 +35,15 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="flex-container">
+      /* <div className="flex-container">
           <Display value={this.state.gameStatus.winner} />
           <ButtonPanel clickHandler={this.handleClick} gameState={this.state.gameState} isGameOver={!this.state.gameStatus.gameOver}/>
           <Reset resetFunction={this.handleReset}/>
-      </div> 
+      </div>  */
+      <div className="grid-container">
+        <Menu/>
+        <Canvas/>
+      </div>
     );
   }
 }
