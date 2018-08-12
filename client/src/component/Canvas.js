@@ -9,7 +9,7 @@ import ManageTeamPage from "./ManageTeamPage";
 class Canvas extends React.Component {
 
     handleClickFunction = () => {
-        this.props.pageToLoad = "manageTeamPage";
+        //this.props.pageToLoad = "manageTeamPage";
     }
 
     render() {
