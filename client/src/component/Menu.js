@@ -4,22 +4,22 @@ import "./Menu.css";
 import IconBox from "./IconBox";
 
 class Menu extends React.Component {
-    handleClickFunction = () => {
-        this.props.resetFunction();
+    handleClickFunction = (name) => {
+        this.props.changePageNewFunction(name);
     }
 
     render() {
         return (
             <div className="item1">
-                <IconBox value="home"/>
-                <IconBox value="envelope"/>
-                <IconBox value="history"/>
-                <IconBox value="users"/>
+                <IconBox value="home" name="homePage" changePageFunction={this.handleClickFunction}/>
+                <IconBox value="envelope" name="sendMinutesPage" changePageFunction={this.handleClickFunction}/>
+                <IconBox value="history" name="manageHistoryPage" changePageFunction={this.handleClickFunction}/>
+                <IconBox value="users" name="manageTeamPage" changePageFunction={this.handleClickFunction}/>
             </div>
         );
     }
 }
 Menu.propTypes = {
-  resetFunction: PropTypes.func
+    changePageNewFunction: PropTypes.func
 };
 export default Menu;

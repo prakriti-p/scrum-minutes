@@ -3,7 +3,7 @@
   display: grid;
   grid-template-areas:
     'menu body body body body body body body body body body body body body body body body body body body body body body body body';
-  height: 56vw;
+  height: 100vw;
 }
 .grid-container > div {
   text-align: center;

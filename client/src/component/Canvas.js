@@ -1,30 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Canvas.css";
+import HomePage from "./HomePage";
+import SendMinutesPage from "./SendMinutesPage";
+import ManageHistoryPage from "./ManageHistoryPage";
+import ManageTeamPage from "./ManageTeamPage";
 
 class Canvas extends React.Component {
+
     handleClickFunction = () => {
-        this.props.resetFunction();
+        this.props.pageToLoad = "manageTeamPage";
     }
 
     render() {
+
+        var pageToLoad;
+        if(this.props.pageToLoad === "homePage") pageToLoad = <HomePage changeCanvas={this.handleClickFunction}/>;
+        else if(this.props.pageToLoad === "sendMinutesPage") pageToLoad = <SendMinutesPage/>;
+        else if(this.props.pageToLoad === "manageHistoryPage") pageToLoad = <ManageHistoryPage/>;
+        else if(this.props.pageToLoad === "manageTeamPage") pageToLoad = <ManageTeamPage/>;
+
         return (
             <div className="item2">
-                <div className="headings">
-                    <span className="primary-heading">Welcome Prakriti!</span><br/>
-                    <span className="secondary-heading">What do you want to do today?</span>
-                </div>
-
-                <div className="grid-container-inner">
-                    <div className="action-box first-box">Send Minutes</div>
-                    <div className="action-box second-box">Manage History</div>  
-                    <div className="action-box third-box">Manage Team</div>
-                </div>
+            <p>{this.props.pageToLoad}</p>
+                {pageToLoad}
             </div>
         );
     }
 }
 Canvas.propTypes = {
-  resetFunction: PropTypes.func
+    pageToLoad: PropTypes.string
 };
 export default Canvas;

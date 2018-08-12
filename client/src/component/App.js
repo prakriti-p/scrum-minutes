@@ -1,8 +1,6 @@
 import React from "react";
 import Canvas from "./Canvas";
 import Menu from "./Menu";
-import nextMove from "../logic/nextMove"
-import resetGame from "../logic/resetGame"
 import "./App.css";
 import "./Reset.css"
 
@@ -10,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      gameState: {
+      /* gameState: {
         1: { value: "", owner: "" },
         2: { value: "", owner: "" },
         3: { value: "", owner: "" },
@@ -24,15 +22,30 @@ class App extends React.Component {
       gameStatus: {
         gameOver: false,
         winner: "Let's Play!!"
+      }, */
+      currentPage: {
+        name: "homePage"
       }
     }
   }
-  handleClick = (buttonName) => {
+  /* handleClick = (buttonName) => {
     this.setState(nextMove(this.state.gameState, buttonName));
+  }; */
+  handleClick = (buttonName) => {
+    this.setState(this.changePage(this.state.gameState, buttonName));
   };
-  handleReset = () => {
-    this.setState(resetGame());
+  changePage = (pageName) => {
+    this.setState({
+      currentPage: {
+        name: pageName
+      }
+    });
+    
   }
+
+  /* handleReset = () => {
+    this.setState(resetGame());
+  } */
   render() {
     return (
       /* <div className="flex-container">
@@ -41,8 +54,8 @@ class App extends React.Component {
           <Reset resetFunction={this.handleReset}/>
       </div>  */
       <div className="grid-container">
-        <Menu/>
-        <Canvas/>
+        <Menu changePageNewFunction={this.changePage}/>
+        <Canvas pageToLoad={this.state.currentPage.name}/>
       </div>
     );
   }

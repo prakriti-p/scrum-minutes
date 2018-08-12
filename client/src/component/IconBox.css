@@ -1,5 +1,12 @@
 .iconbox {
-    height: 3%;
+    height: 4%;
     align-content: center;
-    padding-top: 10px;
+    padding-top: 7px;
+    line-height: 4vw;
 }
+
+.iconbox:hover{
+    background:#54534c;
+    color:white;
+    border: #54534c;
+  }

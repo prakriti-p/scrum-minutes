@@ -9,8 +9,8 @@ class Reset extends React.Component {
 
     render() {
         return (
-            <div id="controls" className="flex-item sidebar">
-                <div></div>
+            <div id="controls" class="flex-item">
+                <button className="reset-button" onClick={this.handleClickFunction}>R E S E T</button>
             </div>
         );
     }
