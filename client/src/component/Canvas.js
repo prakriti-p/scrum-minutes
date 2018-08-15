@@ -15,7 +15,7 @@ class Canvas extends React.Component {
     render() {
 
         var pageToLoad;
-        if(this.props.pageToLoad === "homePage") pageToLoad = <HomePage changeCanvas={this.handleClickFunction}/>;
+        if(this.props.pageToLoad === "homePage") pageToLoad = <HomePage/>;
         else if(this.props.pageToLoad === "sendMinutesPage") pageToLoad = <SendMinutesPage/>;
         else if(this.props.pageToLoad === "manageHistoryPage") pageToLoad = <ManageHistoryPage/>;
         else if(this.props.pageToLoad === "manageTeamPage") pageToLoad = <ManageTeamPage/>;

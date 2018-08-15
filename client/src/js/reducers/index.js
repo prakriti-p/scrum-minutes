@@ -1,15 +1,21 @@
 import { ADD_ARTICLE } from "../constants/action-types";
+import { CHANGE_PAGE } from "../constants/action-types";
 
 const initialState = {
-  articles: []
+  articles: [],
+  currentPage: "homePage",
+  teamMembers: ["Prakriti", "Suribabu", "Tanuja", "Venkatesh", "Pratanu"],
+  scrumHistory: []
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ARTICLE:
-      //state.articles.push(action.payload);
-      //return state;
       return { ...state, articles: [...state.articles, action.payload] };
+    case CHANGE_PAGE:
+    //console.log(">>>", state, action);
+    //console.log({ ...state, currentPage: action.payload });
+      return { ...state, currentPage: action.payload };
     default:
       return state;
   }

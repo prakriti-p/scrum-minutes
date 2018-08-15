@@ -1,24 +1,36 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { changePage } from "../js/actions/index";
 import "./IconBox.css";
 
-class IconBox extends React.Component {
+const mapDispatchToProps = dispatch => {
+    return {
+        changePage: page => dispatch(changePage(page))
+    };
+  };
 
-    handleClickFunction = () => {
-        this.props.changePageFunction(this.props.name);
-    }
+class IconBoxConnected extends React.Component {
+
+    handleSubmit = (event) => {
+        this.props.changePage(this.props.name);
+      }
 
     render() {
         return (
-            <div className="iconbox" onClick={this.handleClickFunction}>
+            <div className="iconbox" onClick={this.handleSubmit}>
                 <i className={`fa fa-${ this.props.value } fa-2x`} aria-hidden="true"></i>
             </div>
         );
     }
 }
-IconBox.propTypes = {
+
+IconBoxConnected.propTypes = {
   value: PropTypes.string,
   changePageFunction: PropTypes.func,
   name: PropTypes.string
 };
+
+const IconBox = connect(null, mapDispatchToProps)(IconBoxConnected);
+
 export default IconBox;
