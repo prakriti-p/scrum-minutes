@@ -2,35 +2,23 @@ import React from "react";
 import Canvas from "./Canvas";
 import Menu from "./Menu";
 import "./App.css";
-import "./Reset.css"
+import List from "./List";
+import Form from "./Form";
+import { connect } from "react-redux";
 
-class App extends React.Component {
+const mapStateToProps = state => {
+  return { currentPage: state.currentPage };
+};
+
+class AppConnected extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      /* gameState: {
-        1: { value: "", owner: "" },
-        2: { value: "", owner: "" },
-        3: { value: "", owner: "" },
-        4: { value: "", owner: "" },
-        5: { value: "", owner: "" },
-        6: { value: "", owner: "" },
-        7: { value: "", owner: "" },
-        8: { value: "", owner: "" },
-        9: { value: "", owner: "" } 
-      },
-      gameStatus: {
-        gameOver: false,
-        winner: "Let's Play!!"
-      }, */
       currentPage: {
         name: "homePage"
       }
     }
   }
-  /* handleClick = (buttonName) => {
-    this.setState(nextMove(this.state.gameState, buttonName));
-  }; */
   handleClick = (buttonName) => {
     this.setState(this.changePage(this.state.gameState, buttonName));
   };
@@ -42,22 +30,25 @@ class App extends React.Component {
     });
     
   }
-
-  /* handleReset = () => {
-    this.setState(resetGame());
-  } */
   render() {
     return (
-      /* <div className="flex-container">
-          <Display value={this.state.gameStatus.winner} />
-          <ButtonPanel clickHandler={this.handleClick} gameState={this.state.gameState} isGameOver={!this.state.gameStatus.gameOver}/>
-          <Reset resetFunction={this.handleReset}/>
-      </div>  */
       <div className="grid-container">
         <Menu changePageNewFunction={this.changePage}/>
-        <Canvas pageToLoad={this.state.currentPage.name}/>
+        <Canvas pageToLoad={this.props.currentPage}/>
       </div>
+      /* <div className="row mt-5">
+        <div className="col-md-4 offset-md-1">
+          <h2>Articles</h2>
+          <List />
+        </div>
+        <div className="col-md-4 offset-md-1">
+          <h2>Add a new article</h2>
+          <Form />
+        </div>
+      </div> */
     );
   }
 }
+
+const App = connect(mapStateToProps)(AppConnected);
 export default App;
