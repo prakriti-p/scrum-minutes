@@ -26,7 +26,6 @@ class ConnectedSendMinutesPage extends React.Component {
     }
 
     render(teamMembers) {
-        console.log(this.props);
         return (
             <div className="item2">
                 <div className="headings">

@@ -4,6 +4,7 @@ var bodyParser = require('body-parser'); //to parse the body data in api request
 var path = require('path');
 var open = require('open');
 
+
 var app = express();   
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -23,10 +24,12 @@ var Scrum = require('./models/scrumModel');
 //bookRouter = require('./Routes/bookRoutes')(Book);
 teamRouter = require('./Routes/teamRoutes')(Team);
 scrumRouter = require('./Routes/scrumRoutes')(Scrum);
+mailRouter = require('./Routes/mailerRoutes');
 
 //app.use('/api', bookRouter);
-app.use('/api', teamRouter);
-app.use('/api', scrumRouter)
+//app.use('/api', teamRouter);
+//app.use('/api', scrumRouter);
+app.use('/api',mailRouter);
 
 app.get('/', function(request, response) {
     //response.send("Gulp started this website! Welcome to our website!");
@@ -41,5 +44,9 @@ app.listen(port, function(err) {
         open('http://localhost:8000');
     }
 })  
+
+
+
+
 
 module.exports = app;
