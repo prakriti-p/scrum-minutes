@@ -2,41 +2,36 @@ var express = require('express');
 var nodemailer = require('nodemailer');
 
 var routes = function() {      
-    var mailerRouter = express.Router();
+    var mailRouter = express.Router();
 
-    var mailOptions = {
-        from: 'prakritiallurs@gmail.com>', // sender address
-        to: 'prakriti.patra@gmail.com', // list of receivers
-        subject: 'Email Example', // Subject line
-        text: "text" //, // plaintext body
-        // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-    };
-
-    teamRouter.route('/sendMail')
-        .post(function(req,res) {
-            // Not the movie transporter!
-            console.log("bhhhh");
+    mailRouter.route('/mail')
+        .get(function(request, response) {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'prakritiallurs@gmail.com', // Your email id
-                    pass: '25092005#' // Your password
+                    user: 'noreply.minutes@gmail.com',
+                    pass: 'meqbfnnyabqnvhyb'
                 }
-            });
-        
-            transporter.sendMail(mailOptions, function(error, info){
-                if(error){
-                    console.log(error);
-                    res.json({yo: 'error'});
-                }else{
-                    console.log('Message sent: ' + info.response);
-                    res.json({yo: info.response});
-                };
-            });
-            
+              });
+              
+              var mailOptions = {
+                from: 'noreply.minutes@gmail.com',
+                to: 'prakriti.patra@gmail.com',
+                subject: 'Sending Email using Node.js',
+                text: 'That was easy!'
+              };
+              
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+            response.json({"key": "value"});
         }) 
-    
-    return mailerRouter;
+
+    return mailRouter;
 }
  
 module.exports = routes;

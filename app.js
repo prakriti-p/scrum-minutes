@@ -24,7 +24,7 @@ var Scrum = require('./models/scrumModel');
 //bookRouter = require('./Routes/bookRoutes')(Book);
 teamRouter = require('./Routes/teamRoutes')(Team);
 scrumRouter = require('./Routes/scrumRoutes')(Scrum);
-mailRouter = require('./Routes/mailerRoutes');
+mailRouter = require('./Routes/mailerRoutes')();
 
 //app.use('/api', bookRouter);
 //app.use('/api', teamRouter);
